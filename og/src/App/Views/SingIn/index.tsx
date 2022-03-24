@@ -1,20 +1,30 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Logo from "../../Assets/Logo.png";
-import { SuggestionBox } from "../../Components/SuggestionBox";
-import { TypeQR } from "./Components/TypeQR";
-import { STATIONS_GET } from "../../../Store/modules/Station/actions";
+import { useCallback, useEffect, useState } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
+import { STATIONS_GET } from "../../../Store/modules/Station/actions";
 import { I_STAGE_GLOBAL } from "../../../Store/types";
 import { I_StationsState } from "../../../Store/modules/Station/types";
 
+import { SuggestionBox } from "../../Components/SuggestionBox";
+
 import { Container, Loading, ERROR } from "./style";
+import Logo from "../../Assets/Logo.png";
+
+import { I_TYPE_LOGIN } from "./types";
+import { TypeSignIn } from "./Components/TypeSignIn";
 
 export function SingIn() {
   const dispatch = useDispatch();
   const STATION = useSelector<I_STAGE_GLOBAL, I_StationsState>((stage) => {
     return stage.stations;
   });
+
+  const [typeLoginSelected, setTypeLoginSelected] =
+    useState<I_TYPE_LOGIN>("QRCODE");
+
+  const handleAlterTypeSignIn = useCallback((value: I_TYPE_LOGIN) => {
+    setTypeLoginSelected(value);
+  }, []);
 
   useEffect(() => {
     dispatch(STATIONS_GET());
@@ -46,10 +56,13 @@ export function SingIn() {
         </header>
         <main>
           <article>
-            <SuggestionBox />
+            <SuggestionBox dataValues={STATION.stations} />
           </article>
 
-          <TypeQR />
+          <TypeSignIn
+            type={typeLoginSelected}
+            alterTypeFN={handleAlterTypeSignIn}
+          />
         </main>
       </div>
     </Container>

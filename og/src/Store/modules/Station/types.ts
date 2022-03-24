@@ -1,6 +1,6 @@
 export type I_STATION = {
   name: string;
-  id: string;
+  id: number;
 };
 
 export interface I_StationsState {

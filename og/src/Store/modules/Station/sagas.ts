@@ -19,8 +19,6 @@ function* getStations(DTO: I_STATIONS_GET) {
       };
     });
 
-    // throw new Error("TA NOIS");
-
     yield delay(1000);
     yield put(
       STATIONS_SET({
