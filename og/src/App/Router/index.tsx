@@ -5,6 +5,14 @@ import { I_ROUTE_STAGE } from "../../Store/modules/Router/types";
 import { SingIn } from "../Views/SingIn";
 import { Menu } from "../Views/Menu";
 import { UserLog } from "../Views/UserLog";
+import { Checklists } from "../Views/Checklists";
+import { Config } from "../Views/Config";
+import { Files } from "../Views/Files";
+import { Helper } from "../Views/Helper";
+import { Operation } from "../Views/Operation";
+import { Order } from "../Views/Order";
+import { Stops } from "../Views/Stops";
+import { Users } from "../Views/Users";
 
 export function Router() {
   const Router = useSelector<I_STAGE_GLOBAL, I_ROUTE_STAGE>(
@@ -12,6 +20,34 @@ export function Router() {
   );
 
   switch (Router.view) {
+    case "Config": {
+      return <Config />;
+    }
+
+    case "Files": {
+      return <Files />;
+    }
+
+    case "Helper": {
+      return <Helper />;
+    }
+
+    case "Operation": {
+      return <Operation />;
+    }
+
+    case "Order": {
+      return <Order />;
+    }
+
+    case "Stops": {
+      return <Stops />;
+    }
+
+    case "Users": {
+      return <Users />;
+    }
+
     case "login": {
       return <SingIn />;
     }
@@ -22,6 +58,10 @@ export function Router() {
 
     case "userLogin": {
       return <UserLog />;
+    }
+
+    case "Checklists": {
+      return <Checklists />;
     }
 
     default:
