@@ -1,6 +1,7 @@
 export const THEMEAPP = {
   backgrounds: {
     app: "#111",
+    cards: "#2d2d2d",
   },
   fonts: {
     colors: {

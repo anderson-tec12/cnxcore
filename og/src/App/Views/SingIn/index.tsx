@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { STATIONS_GET } from "../../../Store/modules/Station/actions";
 import { I_STAGE_GLOBAL } from "../../../Store/types";
 import { I_StationsState } from "../../../Store/modules/Station/types";
+import { I_LOGIN_STAGE } from "../../../Store/modules/Login/types";
 
 import { SuggestionBox } from "../../Components/SuggestionBox";
 
@@ -12,6 +13,8 @@ import Logo from "../../Assets/Logo.png";
 
 import { I_TYPE_LOGIN } from "./types";
 import { TypeSignIn } from "./Components/TypeSignIn";
+import { LOGIN_GET } from "../../../Store/modules/Login/actions";
+import { ROUTER_SET } from "../../../Store/modules/Router/actions";
 
 export function SingIn() {
   const dispatch = useDispatch();
@@ -19,12 +22,31 @@ export function SingIn() {
     return stage.stations;
   });
 
+  const Login = useSelector<I_STAGE_GLOBAL, I_LOGIN_STAGE>((stage) => {
+    return stage.Login;
+  });
+
+  const [station_selected, setStation_selected] = useState(0);
+
   const [typeLoginSelected, setTypeLoginSelected] =
     useState<I_TYPE_LOGIN>("QRCODE");
 
   const handleAlterTypeSignIn = useCallback((value: I_TYPE_LOGIN) => {
     setTypeLoginSelected(value);
   }, []);
+
+  const handleSetStationSelected = (value: number) => {
+    setStation_selected(value);
+  };
+
+  const handleLoginUserAndPass = (user: string, password: string) => {
+    dispatch(
+      LOGIN_GET({
+        pass: password,
+        user,
+      })
+    );
+  };
 
   useEffect(() => {
     dispatch(STATIONS_GET());
@@ -39,11 +61,37 @@ export function SingIn() {
       <ERROR>
         <article>
           <p>Não foi possivel carregar a listagem de recursos</p>
-          <button>Tentar Novamente</button>
+          <button
+            onClick={() => {
+              dispatch(
+                ROUTER_SET({
+                  old: "login",
+                  to: "menu",
+                })
+              );
+            }}
+          >
+            Tentar Novamente
+          </button>
         </article>
       </ERROR>
     );
   }
+
+  if (Login.isRequestLogin) {
+    return <Loading>Processando</Loading>;
+  }
+
+  // if (Login.isRequestLogin) {
+  //   return (
+  //     <ERROR>
+  //       <article>
+  //         <p>Credenciais invalidas</p>
+  //         <button>Tentar Novamente</button>
+  //       </article>
+  //     </ERROR>
+  //   );
+  // }
 
   return (
     <Container>
@@ -56,12 +104,17 @@ export function SingIn() {
         </header>
         <main>
           <article>
-            <SuggestionBox dataValues={STATION.stations} />
+            <SuggestionBox
+              itemActived={station_selected}
+              dataValues={STATION.stations}
+              alterItemActived={handleSetStationSelected}
+            />
           </article>
 
           <TypeSignIn
             type={typeLoginSelected}
             alterTypeFN={handleAlterTypeSignIn}
+            loginForm={handleLoginUserAndPass}
           />
         </main>
       </div>

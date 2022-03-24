@@ -9,10 +9,13 @@ const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
 
 //toda a aplicação tem acesso ao store
-const store = createStore(
-  rootReducers,
-  composeWithDevTools(applyMiddleware(...middleware))
-);
+const store =
+  process.env.NODE_ENV === "production"
+    ? createStore(rootReducers, applyMiddleware(...middleware))
+    : createStore(
+        rootReducers,
+        composeWithDevTools(applyMiddleware(...middleware))
+      );
 
 sagaMiddleware.run(rootSaga);
 

@@ -17,6 +17,9 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
+    span {
+      font-size: 14px;
+    }
   }
 
   > article.suggestion {
@@ -25,7 +28,7 @@ export const Container = styled.div`
     margin-top: 21px;
     flex-direction: column;
     z-index: 2;
-    height: 85px;
+    height: 150px;
     border: 1px solid #ccc;
     border-top: 0px;
     padding: 2px 4px;
@@ -37,10 +40,12 @@ export const Container = styled.div`
       border: none;
       border-bottom: 1px solid ${(props) => props.theme.borders.default};
       margin: 3px 0px;
+      font-size: 12px;
+      width: 98%;
     }
 
     ul {
-      max-height: 85px;
+      max-height: 150px;
       overflow: auto;
       width: 100%;
       font-size: 14px;

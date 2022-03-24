@@ -18,7 +18,7 @@ export function TypeQR({ alterType }: I_PROPS) {
       <button className="BTN-clean" onClick={() => alterType("FORM")}>
         Entrar com usuario e senha{" "}
       </button>
-      <Button viewName="scan" className="BTN-Action" />
+      <Button viewName="Scan" className="BTN-Action" />
     </Container>
   );
 }
