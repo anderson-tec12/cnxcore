@@ -13,7 +13,10 @@ import Logo from "../../Assets/Logo.png";
 
 import { I_TYPE_LOGIN } from "./types";
 import { TypeSignIn } from "./Components/TypeSignIn";
-import { LOGIN_GET } from "../../../Store/modules/Login/actions";
+import {
+  LOGIN_ERROR_SET,
+  LOGIN_GET,
+} from "../../../Store/modules/Login/actions";
 import { ROUTER_SET } from "../../../Store/modules/Router/actions";
 
 export function SingIn() {
@@ -44,6 +47,7 @@ export function SingIn() {
       LOGIN_GET({
         pass: password,
         user,
+        station: station_selected,
       })
     );
   };
@@ -82,16 +86,18 @@ export function SingIn() {
     return <Loading>Processando</Loading>;
   }
 
-  // if (Login.isRequestLogin) {
-  //   return (
-  //     <ERROR>
-  //       <article>
-  //         <p>Credenciais invalidas</p>
-  //         <button>Tentar Novamente</button>
-  //       </article>
-  //     </ERROR>
-  //   );
-  // }
+  if (Login.error) {
+    return (
+      <ERROR>
+        <article>
+          <p>Credenciais invalidas</p>
+          <button onClick={() => dispatch(LOGIN_ERROR_SET(false))}>
+            Tentar Novamente
+          </button>
+        </article>
+      </ERROR>
+    );
+  }
 
   return (
     <Container>

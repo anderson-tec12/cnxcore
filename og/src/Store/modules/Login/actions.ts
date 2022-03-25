@@ -12,3 +12,10 @@ export function LOGIN_SUCCESS() {
     type: ActionTypes.LOGIN_SUCCESS,
   };
 }
+
+export function LOGIN_ERROR_SET(value: boolean) {
+  return {
+    type: ActionTypes.LOGIN_ERROR,
+    payload: value,
+  };
+}

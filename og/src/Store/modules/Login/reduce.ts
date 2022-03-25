@@ -8,7 +8,9 @@ const INITIAL_STATE: I_LOGIN_STAGE = {
   loginData: {
     pass: "",
     user: "",
+    station: 0,
   },
+  error: false,
 };
 
 const Login: Reducer<I_LOGIN_STAGE> = (state = INITIAL_STATE, action) => {
@@ -24,6 +26,12 @@ const Login: Reducer<I_LOGIN_STAGE> = (state = INITIAL_STATE, action) => {
       case ActionTypes.LOGIN_SUCCESS: {
         draft.isRequestLogin = false;
 
+        break;
+      }
+
+      case ActionTypes.LOGIN_ERROR: {
+        draft.isRequestLogin = false;
+        draft.error = action.payload;
         break;
       }
 
