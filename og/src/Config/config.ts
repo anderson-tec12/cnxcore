@@ -1,9 +1,9 @@
 export const Config = {
   environments: {
-    dev: {
+    prod: {
       APICORE: "https://appluxottica.brazilsouth.cloudapp.azure.com:44333",
     },
-    prod: {
+    dev: {
       APICORE: "http://cnxserver01:7022",
     },
   },

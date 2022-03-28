@@ -2,6 +2,7 @@ export const THEMEAPP = {
   backgrounds: {
     app: "#111",
     cards: "#2d2d2d",
+    ballActive: "rgb(242, 175, 19)",
   },
   fonts: {
     colors: {

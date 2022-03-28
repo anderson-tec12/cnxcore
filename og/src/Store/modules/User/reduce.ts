@@ -10,6 +10,7 @@ const INITIAL_STATE: I_USER_STAGE = {
     name: "",
     token: "",
     email: "",
+    level: 0,
   },
   usersLogin: [],
 };
@@ -27,6 +28,11 @@ const User: Reducer<I_USER_STAGE> = (state = INITIAL_STATE, action) => {
         const users = draft.usersLogin.filter(
           (item) => item.id !== action.payload
         );
+
+        if (draft.active.id === action.payload) {
+          draft.active = INITIAL_STATE.active;
+        }
+
         draft.usersLogin = users;
         break;
       }

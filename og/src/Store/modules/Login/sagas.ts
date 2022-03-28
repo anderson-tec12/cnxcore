@@ -35,6 +35,7 @@ function* getLogin(DTO: I_STATIONS_GET) {
         id: data.data.userModel.id,
         token: data.data.token,
         email: data.data.userModel.email,
+        level: data.data.userModel.acessLevel,
       })
     );
 

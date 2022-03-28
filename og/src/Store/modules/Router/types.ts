@@ -13,7 +13,7 @@ export type I_View =
 
 export interface I_ROUTE_STAGE {
   view: I_View;
-  history: string[];
+  history: I_View[];
 }
 
 export enum ActionTypes {

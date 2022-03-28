@@ -4,6 +4,7 @@ export type I_User = {
   id: number;
   code: string;
   email: string;
+  level: number;
 };
 
 export type I_USER_STAGE = {
