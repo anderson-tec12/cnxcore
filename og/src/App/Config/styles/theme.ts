@@ -19,4 +19,7 @@ export const THEMEAPP = {
       colorText: "#e9e9e9",
     },
   },
+  tags: {
+    order: "rgb(112, 112, 112)",
+  },
 };

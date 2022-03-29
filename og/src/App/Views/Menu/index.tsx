@@ -47,7 +47,7 @@ export function Menu() {
             <FaUserAlt />
             <span>Usuarios</span>
           </li>
-          <li>
+          <li onClick={() => toView("Order")}>
             <FaRegListAlt />
             <span>Ordem</span>
           </li>

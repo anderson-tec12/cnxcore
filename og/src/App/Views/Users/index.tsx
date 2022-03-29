@@ -18,6 +18,7 @@ type I_STAGE = {
   USERS: I_USER_STAGE;
   ENUM: I_TYPE_ENUM[];
 };
+
 export function Users() {
   const dispatch = useDispatch();
   const { ENUM, USERS } = useSelector<I_STAGE_GLOBAL, I_STAGE>((stage) => {
