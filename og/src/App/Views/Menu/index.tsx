@@ -51,23 +51,23 @@ export function Menu() {
             <FaRegListAlt />
             <span>Ordem</span>
           </li>
-          <li>
+          <li onClick={() => toView("Operation")}>
             <FaStepForward />
             <span>Operação</span>
           </li>
-          <li>
+          <li onClick={() => toView("Helper")}>
             <IoMdHelpCircle />
             <span>Ajuda</span>
           </li>
-          <li>
+          <li onClick={() => toView("Stops")}>
             <VscSearchStop />
             <span>Consultar paradas</span>
           </li>
-          <li>
+          <li onClick={() => toView("Files")}>
             <AiFillFolder />
             <span>Documentos</span>
           </li>
-          <li>
+          <li onClick={() => toView("Checklists")}>
             <VscChecklist />
             <span>Checklist</span>
           </li>
@@ -79,7 +79,7 @@ export function Menu() {
             <CgListTree />
             <span>Monitor de recursos</span>
           </li>
-          <li>
+          <li onClick={() => toView("Config")}>
             <FaCogs />
             <span>Configuração</span>
           </li>

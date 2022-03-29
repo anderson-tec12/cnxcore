@@ -4,6 +4,7 @@ import { IoQrCode } from "react-icons/io5";
 import { Container } from "./styles";
 import { useEffect, useState } from "react";
 import { GET_STATION_HOOK } from "../../Hooks/getStation";
+import { GET_ROUTER_HOOK } from "../../Hooks/getView";
 
 import { apiCore } from "../../../Services";
 import { v4 } from "uuid";
@@ -19,6 +20,7 @@ interface I_ORDER {
 
 export function Order() {
   const station = GET_STATION_HOOK();
+  const { toRender } = GET_ROUTER_HOOK();
   const [VT, setVT] = useState<"L" | "P" | "E">("L");
 
   const [listOrders_L, setListOrders_L] = useState<I_ORDER[]>([]);
@@ -87,7 +89,11 @@ export function Order() {
   return (
     <Container>
       <header>
-        <div>
+        <div
+          onClick={() => {
+            toRender("menu", "Order");
+          }}
+        >
           <BiChevronLeft />
           <span>Ordem</span>
         </div>

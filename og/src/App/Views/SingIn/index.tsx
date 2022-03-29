@@ -111,6 +111,7 @@ export function SingIn() {
         <main>
           <article>
             <SuggestionBox
+              nameIsEmpty="Estação"
               itemActived={station_selected}
               dataValues={STATION.stations}
               alterItemActived={handleSetStationSelected}

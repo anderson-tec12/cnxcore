@@ -11,6 +11,7 @@ interface I_PROPS {
   dataValues: I_DATA_VALUES[];
   itemActived: number;
   alterItemActived(value: number): void;
+  nameIsEmpty: string;
 }
 
 let timeExec: NodeJS.Timeout;
@@ -19,6 +20,7 @@ export function SuggestionBox({
   dataValues,
   itemActived,
   alterItemActived,
+  nameIsEmpty,
 }: I_PROPS) {
   const [isOpen, setOpen] = useState(false);
   const [baseLocal, setBaseLocal] = useState(dataValues);
@@ -54,7 +56,7 @@ export function SuggestionBox({
   return (
     <Container>
       <div className="input-fake" onClick={() => setOpen(!isOpen)}>
-        <span>{valueActive ? valueActive.name : "Estação"}</span>
+        <span>{valueActive ? valueActive.name : nameIsEmpty}</span>
         <IoIosArrowDown />
       </div>
 
