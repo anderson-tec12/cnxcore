@@ -164,7 +164,7 @@ export function OperationList() {
             ))}
 
             {operationsStation.map((item) => (
-              <li key={v4()}>
+              <li className="not-link" key={v4()}>
                 <div>
                   <span className="tag">{item.code}</span>
                 </div>

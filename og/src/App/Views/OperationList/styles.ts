@@ -101,6 +101,10 @@ export const Container = styled.div`
         border-radius: 4px;
         padding: 4px 8px;
 
+        &.not-link {
+          border-bottom: 1px solid #ccc;
+        }
+
         div {
           width: 100%;
           margin-top: 5px;
