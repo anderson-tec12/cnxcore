@@ -106,7 +106,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 5px;
-    max-height: 420px;
+    max-height: 520px;
     overflow-y: auto;
 
     &::-webkit-scrollbar-track  {
@@ -125,7 +125,7 @@ export const Container = styled.div`
     div {
       width: 100%;
       background-color: ${(props) => props.theme.backgrounds.cards};
-      padding: 13px 8px;
+      padding: 16px 8px;
       display: flex;
 
       span {

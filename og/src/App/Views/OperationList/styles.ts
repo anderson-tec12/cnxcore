@@ -89,7 +89,7 @@ export const Container = styled.div`
       gap: 8px;
       flex-wrap: wrap;
       /* height:400px; */
-      max-height: 500px;
+      max-height: 580px;
       overflow: auto;
       padding: 2px;
 

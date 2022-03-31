@@ -28,7 +28,14 @@ export function Operation() {
       <main>
         <div className="controllers">
           <button>iniciar</button>
-          <button>Apontar</button>
+          <button
+            type="button"
+            onClick={() => {
+              toRender("Appointments", "Operation");
+            }}
+          >
+            Apontar
+          </button>
         </div>
 
         <div className="info">

@@ -15,6 +15,7 @@ import { Stops } from "../Views/Stops";
 import { Users } from "../Views/Users";
 import { OperationList } from "../Views/OperationList";
 import { Warning } from "../Views/Warning";
+import { Appointments } from "../Views/Appointments";
 
 export function Router() {
   const Router = useSelector<I_STAGE_GLOBAL, I_ROUTE_STAGE>(
@@ -24,6 +25,9 @@ export function Router() {
   switch (Router.view) {
     case "Config": {
       return <Config />;
+    }
+    case "Appointments": {
+      return <Appointments />;
     }
 
     case "Files": {

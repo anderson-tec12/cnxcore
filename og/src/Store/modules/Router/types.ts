@@ -11,7 +11,8 @@ export type I_View =
   | "Helper"
   | "Files"
   | "Order/OperationList"
-  | "Warning";
+  | "Warning"
+  | "Appointments";
 
 export interface I_ROUTE_STAGE {
   view: I_View;
