@@ -9,7 +9,9 @@ export type I_View =
   | "Order"
   | "Operation"
   | "Helper"
-  | "Files";
+  | "Files"
+  | "Order/OperationList"
+  | "Warning";
 
 export interface I_ROUTE_STAGE {
   view: I_View;

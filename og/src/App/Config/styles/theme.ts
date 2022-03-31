@@ -3,6 +3,7 @@ export const THEMEAPP = {
     app: "#111",
     cards: "#2d2d2d",
     ballActive: "rgb(242, 175, 19)",
+    warning: "rgb(240, 71, 71)",
   },
   fonts: {
     colors: {

@@ -13,6 +13,8 @@ import { Operation } from "../Views/Operation";
 import { Order } from "../Views/Order";
 import { Stops } from "../Views/Stops";
 import { Users } from "../Views/Users";
+import { OperationList } from "../Views/OperationList";
+import { Warning } from "../Views/Warning";
 
 export function Router() {
   const Router = useSelector<I_STAGE_GLOBAL, I_ROUTE_STAGE>(
@@ -40,6 +42,10 @@ export function Router() {
       return <Order />;
     }
 
+    case "Order/OperationList": {
+      return <OperationList />;
+    }
+
     case "Stops": {
       return <Stops />;
     }
@@ -62,6 +68,9 @@ export function Router() {
 
     case "Checklists": {
       return <Checklists />;
+    }
+    case "Warning": {
+      return <Warning />;
     }
 
     default:

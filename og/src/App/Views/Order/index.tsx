@@ -8,6 +8,7 @@ import { GET_ROUTER_HOOK } from "../../Hooks/getView";
 
 import { apiCore } from "../../../Services";
 import { v4 } from "uuid";
+import { SET_PRODUCING_HOOK } from "../../Hooks/setProducing";
 
 interface I_ORDER {
   number: string;
@@ -16,10 +17,12 @@ interface I_ORDER {
   qtd: number;
   status: number;
   key: string;
+  id: number;
 }
 
 export function Order() {
   const station = GET_STATION_HOOK();
+  const { setPRODUCING_ORDER } = SET_PRODUCING_HOOK();
   const { toRender } = GET_ROUTER_HOOK();
   const [VT, setVT] = useState<"L" | "P" | "E">("L");
 
@@ -46,6 +49,7 @@ export function Order() {
             gridValue: order.orderCustom?.gridValue,
             qtd: order.qtyExpected,
             status: order.status,
+            id: order.id,
             key: v4(),
           };
         })
@@ -76,7 +80,7 @@ export function Order() {
           }
         );
 
-      console.log(packOrders);
+      // console.log(packOrders);
 
       setListOrders_L(packOrders.toExec);
       setListOrders_E(packOrders.closed);
@@ -135,7 +139,13 @@ export function Order() {
         <div className="container-orders">
           {VT === "L" &&
             listOrders_L.map((order) => (
-              <div key={order.key}>
+              <div
+                key={order.key}
+                onClick={() => {
+                  setPRODUCING_ORDER({ id: order.id, number: order.number });
+                  toRender("Order/OperationList", "Order");
+                }}
+              >
                 <span className="tag">#{order.number}</span>
                 <span className="desc">{order.prod}</span>
                 <span className="descNumber">{order.gridValue}</span>
@@ -145,7 +155,13 @@ export function Order() {
 
           {VT === "E" &&
             listOrders_E.map((order) => (
-              <div key={order.key}>
+              <div
+                key={order.key}
+                onClick={() => {
+                  setPRODUCING_ORDER({ id: order.id, number: order.number });
+                  toRender("Order/OperationList", "Order");
+                }}
+              >
                 <span className="tag">#{order.number}</span>
                 <span className="desc">{order.prod}</span>
                 <span className="descNumber">{order.gridValue}</span>
@@ -155,7 +171,13 @@ export function Order() {
 
           {VT === "P" &&
             listOrders_P.map((order) => (
-              <div key={order.key}>
+              <div
+                key={order.key}
+                onClick={() => {
+                  setPRODUCING_ORDER({ id: order.id, number: order.number });
+                  toRender("Order/OperationList", "Order");
+                }}
+              >
                 <span className="tag">#{order.number}</span>
                 <span className="desc">{order.prod}</span>
                 <span className="descNumber">{order.gridValue}</span>
